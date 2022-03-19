@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class HWLesson4 {
     //TicTacToe
-    private static final int SIZE = 3;
+    private static final int SIZE = 5;
     private static final char DOT_X = 'X';
     private static final char DOT_O = 'O';
     private static final char DOT_EMPTY = '•';
@@ -22,7 +22,7 @@ public class HWLesson4 {
             humanTurn();
             printMap();
 
-            if (isWin(DOT_X)) {
+            if (isWinHuman()) {
                 System.out.println("Человек победил!");
                 break;
             }
@@ -33,7 +33,7 @@ public class HWLesson4 {
             computerTurn();
             printMap();
 
-            if (isWin(DOT_O)) {
+            if (isWinII()) {
                 System.out.println("Компьютер победил!");
                 break;
             }
@@ -74,59 +74,133 @@ public class HWLesson4 {
         MAP[x][y] = DOT_X;
     }
 
-    private static boolean isWin(char symbol) {
-//        if (MAP[0][0] == symbol && MAP[0][1] == symbol && MAP[0][2] == symbol) return true; // проверили строки
-//        if (MAP[1][0] == symbol && MAP[1][1] == symbol && MAP[1][2] == symbol) return true; // проверили строки
-//        if (MAP[2][0] == symbol && MAP[2][1] == symbol && MAP[2][2] == symbol) return true; // проверили строки
-
+    private static boolean isWinHuman() {
         for (int i = 0; i < SIZE; i++) {
             int summString = 0;
             for (int j = 0; j < SIZE; j++) {
-                if (MAP[i][j] == symbol) {
+                if (MAP[i][j] != DOT_X) {
+                    summString = 0;
+                }
+                if (MAP[i][j] == DOT_X) {
                     summString++;
-                    if (summString == SIZE) {
+                    if (summString == SIZE - 1) {
                         return true;
                     }
                 }
+
             }
         }
 
         for (int i = 0; i < SIZE; i++) {
             int summColumn = 0;
             for (int j = 0; j < SIZE; j++) {
-                if (MAP[j][i] == symbol) {
+                if (MAP[j][i] != DOT_X) {
+                    summColumn = 0;
+                }
+                if (MAP[j][i] == DOT_X) {
                     summColumn++;
-                    if (summColumn == SIZE) {
+                    if (summColumn == SIZE - 1) {
                         return true;
                     }
                 }
             }
         }
 
-        int summDiagonal = 0;
+        int summDiagonal1 = 0;
         for (int i = 0; i < SIZE; i++) {
-
             for (int j = 0; j < SIZE; j++) {
-                if (MAP[j][i] == symbol && (i == j || i + j == SIZE-1)) {
-                    summDiagonal++;
-                    if (summDiagonal == SIZE) {
+                if (MAP[i][j] != DOT_X && (i == j)) {
+                    summDiagonal1 = 0;
+                }
+                if (MAP[i][j] == DOT_X && (i == j)) {
+                    summDiagonal1++;
+                    if (summDiagonal1 == SIZE - 1) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        int summDiagonal2 = 0;
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (MAP[i][j] != DOT_X && (i + j == SIZE - 1)) {
+                    summDiagonal2 = 0;
+                }
+                if (MAP[i][j] == DOT_X && (i + j == SIZE - 1)) {
+                    summDiagonal2++;
+                    if (summDiagonal2 == SIZE - 1) {
                         return true;
                     }
                 }
             }
         }
         return false;
+    }
 
+    private static boolean isWinII() {
 
-//        if (MAP[0][0] == symbol && MAP[1][0] == symbol && MAP[2][0] == symbol) return true; // проверили столбцы
-//        if (MAP[0][1] == symbol && MAP[1][1] == symbol && MAP[2][1] == symbol) return true; // проверили столбцы
-//        if (MAP[0][2] == symbol && MAP[1][2] == symbol && MAP[2][2] == symbol) return true; // проверили столбцы
-//
-//        if (MAP[0][0] == symbol && MAP[1][1] == symbol && MAP[2][2] == symbol) return true; // проверили диагональ
-//        if (MAP[0][2] == symbol && MAP[1][1] == symbol && MAP[2][0] == symbol) return true; // проверили диагональ
+        for (int i = 0; i < SIZE; i++) {
+            int summString = 0;
+            for (int j = 0; j < SIZE; j++) {
+                if (MAP[i][j] != DOT_O) {
+                    summString = 0;
+                }
+                if (MAP[i][j] == DOT_O) {
+                    summString++;
+                    if (summString == SIZE - 1) {
+                        return true;
+                    }
+                }
 
+            }
+        }
 
+        for (int i = 0; i < SIZE; i++) {
+            int summColumn = 0;
+            for (int j = 0; j < SIZE; j++) {
+                if (MAP[j][i] != DOT_O) {
+                    summColumn = 0;
+                }
+                if (MAP[j][i] == DOT_O) {
+                    summColumn++;
+                    if (summColumn == SIZE - 1) {
+                        return true;
+                    }
+                }
+            }
+        }
 
+        int summDiagonal1 = 0;
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (MAP[i][j] != DOT_O && (i == j)) {
+                    summDiagonal1 = 0;
+                }
+                if (MAP[i][j] == DOT_O && (i == j)) {
+                    summDiagonal1++;
+                    if (summDiagonal1 == SIZE - 1) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        int summDiagonal2 = 0;
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (MAP[i][j] != DOT_O && (i + j == SIZE - 1)) {
+                    summDiagonal2 = 0;
+                }
+                if (MAP[i][j] == DOT_O && (i + j == SIZE - 1)) {
+                    summDiagonal2++;
+                    if (summDiagonal2 == SIZE - 1) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     private static boolean isMapFull() {
