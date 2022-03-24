@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class HWLesson3 {
     public static void main(String[] args) {
-        //task 1
+        /*//task 1
         int[] array1 = {1, 1, 0, 1, 0, 0};
         for (int i = 0; i <= array1.length - 1; i++) {
             if (array1[i] == 1) {
@@ -66,7 +66,7 @@ public class HWLesson3 {
         }
         System.out.println(a);
         System.out.println(b);
-
+*/
         //task 7
         int[] array5 = {1, 4, 6, 2, 10, 3};
         boolean y = checkBalance(array5);
@@ -101,7 +101,8 @@ public class HWLesson3 {
             for (int j = arr.length - 1; j >= 0; j--) {
                 b += arr[j];
                 if (a == b) {
-                    break out;
+                    break out;                       //чемто заменить
+
                 }
             }
         }
