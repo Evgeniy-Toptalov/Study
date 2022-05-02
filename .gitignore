@@ -56,6 +56,10 @@ cmake-build-*/
 # IntelliJ
 out/
 
+ClientChat/ClientChat.iml
+Server/Server.iml
+Commands/Commands.iml
+
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 
