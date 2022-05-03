@@ -6,9 +6,13 @@ import com.example.command.commands.commands.AuthCommandData;
 import com.example.command.commands.commands.PrivateMessageCommandData;
 import com.example.command.commands.commands.PublicMessageCommandData;
 
+//
+import com.example.clientchat.ClientChat;
+import com.example.clientchat.controllers.AuthController;
+//
+
 import java.io.*;
 import java.net.Socket;
-import java.sql.Time;
 import java.util.Timer;
 import java.util.TimerTask;
 
