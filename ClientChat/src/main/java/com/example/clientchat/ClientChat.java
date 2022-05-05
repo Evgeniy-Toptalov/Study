@@ -11,6 +11,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ClientChat extends Application {
 
@@ -31,6 +33,7 @@ public class ClientChat extends Application {
         getChatStage().show();
         getAuthStage().show();
         getAuthController().initializeMessageHandler();
+
     }
 
     private void initViews() throws IOException {
@@ -63,6 +66,11 @@ public class ClientChat extends Application {
         getAuthController().close();
         getAuthStage().close();
     }
+    public void switchTimeOut() {
+        getAuthController().close();
+        getAuthStage().close();
+    }
+
 
     @Override
     public void init() {
