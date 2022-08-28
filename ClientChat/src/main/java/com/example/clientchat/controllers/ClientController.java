@@ -1,6 +1,7 @@
 package com.example.clientchat.controllers;
 
 import com.example.clientchat.dialogs.Dialogs;
+import com.example.clientchat.history.History;
 import com.example.clientchat.model.Network;
 import com.example.clientchat.model.ReadMessageListener;
 import com.example.command.Command;
@@ -18,7 +19,6 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.List;
 
 public class ClientController {
 
@@ -36,7 +36,7 @@ public class ClientController {
 
     public void sendMessage() {
         String message = messageTextArea.getText();
-
+        History.saveHistory(message);
         if (message.isEmpty()) {
             messageTextArea.clear();
             return;
