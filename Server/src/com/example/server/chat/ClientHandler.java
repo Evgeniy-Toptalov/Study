@@ -9,6 +9,9 @@ import com.example.command.commands.commands.PublicMessageCommandData;
 //
 import com.example.clientchat.ClientChat;
 import com.example.clientchat.controllers.AuthController;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 //
 
 import java.io.*;
@@ -23,6 +26,7 @@ public class ClientHandler {
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
     private String userName;
+    static final Logger logger = LogManager.getLogger(ClientHandler.class);
 
     public ClientHandler(MyServer server, Socket clientSocket) {
         this.server = server;
@@ -83,6 +87,7 @@ public class ClientHandler {
             command = (Command) inputStream.readObject();
         } catch (ClassNotFoundException e) {
             System.err.println("Failed to read Command class");
+            logger.log(Level.ERROR, "Failed to read Command class");
             e.printStackTrace();
         }
 
